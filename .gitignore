@@ -1,0 +1,25 @@
+# Python: cache de bytecode
+__pycache__/
+*.py[cod]
+
+# Pacote instalado com pip install -e .
+*.egg-info/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Editores
+.vscode/
+.idea/
+
+# Sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
