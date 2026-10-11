@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "perceptron_pp"
+version = "0.1.0"
+description = "Perceptron de Rosenblatt - Projeto Prático 2.1 de Redes Neurais Artificiais (UEA)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Arthur Marshall" },
+    { name = "Bruno Brás" },
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scikit-learn",
+    "prettytable",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
