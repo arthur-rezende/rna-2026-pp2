@@ -1,0 +1,14 @@
+name: rna2026-pp2-perceptron
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - jupyter
+  - pip
+  - pip:
+      - prettytable
+      - -e .  
