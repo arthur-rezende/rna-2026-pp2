@@ -1,5 +1,5 @@
-from.perceptron import Perceptron
-from .import metricas
+from .perceptron import Perceptron
+from . import metricas
+from . import visualizacao
 
-
-__all__ = ["Perceptron", "metricas"]
+__all__ = ["Perceptron", "metricas", "visualizacao"]
