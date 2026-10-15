@@ -6,4 +6,4 @@ O projeto implementa, em Python e com orientação a objetos, o algoritmo de tre
 2. **Experimentação**: 10 repetições para cada combinação de taxa de aprendizado η ∈ {0.4, 0.1, 0.01} e intervalo de pesos iniciais I ∈ {(−100, +100), (−0.5, +0.5)}, com tabela de resultados e boxplots.
 3. **Validação holdout**: divisão 70/30 em um problema não linearmente separável (`dataHoldout.txt`), com matriz de confusão, acurácia, precisão, revocação e F1-Score.
 
-BRUNO TESTANDOOO
+
