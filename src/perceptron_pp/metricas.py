@@ -36,26 +36,48 @@ def tabela_metricas(metricas: dict, titulo: str | None = None) -> PrettyTable:
  
  
 def resumo_execucoes(df: pd.DataFrame) -> pd.DataFrame:
+    agregacoes = {
+        "ajustes_media": ("ajustes", "mean"),
+        "ajustes_desvio": ("ajustes", "std"),
+        "epocas_min": ("epocas", "min"),
+        "epocas_max": ("epocas", "max"),
+    }
+    # Em conjuntos não linearmente separáveis nenhuma execução converge; nesse caso o
+    # número de épocas é apenas o teto adotado e não deve ser reportado como convergência.
+    if "convergiu" in df.columns:
+        agregacoes["convergiu"] = ("convergiu", "all")
+
     return (
         df.groupby(["eta", "intervalo"], sort=False)
-        .agg(ajustes_media=("ajustes", "mean"),
-             ajustes_desvio=("ajustes", "std"),
-             epocas_min=("epocas", "min"),
-             epocas_max=("epocas", "max"))
+        .agg(**agregacoes)
         .reset_index()
     )
  
  
 def tabela_resumo(df: pd.DataFrame) -> PrettyTable:
     resumo = resumo_execucoes(df)
-    tabela = PrettyTable(["Taxa de Aprendizado", "Intervalo de Pesos",
-                          "Qtde Ajustes", "Min Épocas", "Max Épocas"])
+    tem_convergencia = "convergiu" in resumo.columns
+
+    colunas = ["Taxa de Aprendizado", "Intervalo de Pesos",
+               "Qtde Ajustes", "Min Épocas", "Max Épocas"]
+    if tem_convergencia:
+        colunas.append("Convergiu")
+    tabela = PrettyTable(colunas)
+
     for _, linha in resumo.iterrows():
-        tabela.add_row([
+        convergiu = bool(linha["convergiu"]) if tem_convergencia else True
+        # Sem convergência, as épocas observadas são apenas o teto do experimento.
+        epocas_min = int(linha["epocas_min"]) if convergiu else "—"
+        epocas_max = int(linha["epocas_max"]) if convergiu else "—"
+        valores = [
             f"η = {linha['eta']}",
             str(linha["intervalo"]),
             f"{linha['ajustes_media']:.2f} ± {linha['ajustes_desvio']:.2f}",
-            int(linha["epocas_min"]),
-            int(linha["epocas_max"]),
-        ])
+            epocas_min,
+            epocas_max,
+        ]
+        if tem_convergencia:
+            valores.append("Sim" if convergiu else "Não")
+        tabela.add_row(valores)
+
     return tabela
