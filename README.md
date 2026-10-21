@@ -10,8 +10,8 @@ métricas, e `pandas`/`prettytable`/`matplotlib` dão suporte a tabelas e figura
 
 | Integrante | Matrícula |
 |---|---|
-| Arthur Marshall | _«preencher matrícula»_ |
-| Bruno Brás | _«preencher matrícula»_ |
+| Arthur Marshall | _2415310048_ |
+| Bruno Brás | _2415310041_ |
 
 **ID da equipe:** (soma do último dígito das matrículas) mod 4 = **1**.
 Consequência: a Parte II usa `data/data120262.txt` e a semente aleatória da Parte III é 1.
