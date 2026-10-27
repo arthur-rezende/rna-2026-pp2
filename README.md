@@ -55,7 +55,7 @@ de épocas é parâmetro (`max_epocas`); o relatório citado usa **500 épocas**
 escala dos pesos) está no notebook.
 
 **Parte II** (`data120262`, ID 1; η ∈ {0.4, 0.1, 0.01} × I ∈ {(−100,+100), (−0.5,+0.5)}, 10 repetições):
-o conjunto **não é linearmente separável** — a taxa de erro estaciona em ~1,9% por época mesmo com
+o conjunto **não é linearmente separável**, a taxa de erro estaciona em ~1,9% por época mesmo com
 20.000 épocas, e o teorema de Novikoff + a distância mínima entre classes opostas descartam a
 separabilidade (ver diagnóstico no notebook). Por isso a métrica "épocas até a convergência" não é
 atingível: a tabela registra a coluna **Convergiu = Não**, Min/Max Épocas = "—" e compara as 6
